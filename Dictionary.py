@@ -77,6 +77,7 @@ print ()
 def menu ():
     while True:    
         askInput = int(input('What do you want to do? (1-3): '))
+        print()
         num = askInput
 
     #specify the function of 1st option
@@ -97,9 +98,12 @@ def menu ():
             con = contact["full_name"]
             con.append(personalInfo)
             contact["full_name"] = con
+            print('========================')
             for key in con:
                 for key in personalInfo:
                     print(key, ":", personalInfo[key])
+            print('========================')
+
 
         elif num == 2:
             askUser = str(input('Do you want to search for specific info? (y/n): '))
@@ -108,10 +112,22 @@ def menu ():
                 if search in personalInfo:
                     print(search, ":" ,personalInfo.get(search))
 
+            elif askUser == 'n':
+                search = input("Please type 'full_name' to display all the info: ")
+                if search == "full_name":
+                    
+                    print('========================')
+                    for key in con:
+                        for key in personalInfo:
+                            print(key, ":", personalInfo[key])
+                    print('========================')
 
 
 
         elif num == 3:
-            print('Option 3')
+            ask = str(input("Do you want to exit? (y/n):  "))
+            if ask == 'y':
+                break
+
 
 menu()    
