@@ -75,37 +75,43 @@ print ()
 
 # 3. Ask the user to choose between the provided menu
 def menu ():
-    askInput = int(input('What do you want to do? (1-3): '))
-    num = askInput
+    while True:    
+        askInput = int(input('What do you want to do? (1-3): '))
+        num = askInput
+
+    #specify the function of 1st option
+        if num == 1:
+            contact = {
+                "full_name":[]
+            }
+
+            personalInfo = {
+                "Full Name":str(input("Please insert your name (ex. Juan dela Cruz): ")),
+                "Age":int(input("Please insert your age (ex. 19): ")),
+                "Address":str(input("Please input your address: ")),
+                "Phone Number":int(input("Please enter your phone number: ")),
+                "Vaccine Status":str(input("Please state your vaccine status(1st Dose/ Fully Vaccinated / Not vaccinated): ")),
+                "Booster Shot":str(input("Booster shot (y/n): "))
+            }
+
+            con = contact["full_name"]
+            con.append(personalInfo)
+            contact["full_name"] = con
+            for key in con:
+                for key in personalInfo:
+                    print(key, ":", personalInfo[key])
+
+        elif num == 2:
+            askUser = str(input('Do you want to search for specific info? (y/n): '))
+            if askUser == 'y': 
+                search = input('Please input what you want to search: ')
+                if search in personalInfo:
+                    print(search, ":" ,personalInfo.get(search))
 
 
 
-#specify the function of 1st option
-    if num == 1:
-        contact = {
-            "full_name":[]
-        }
 
-        personalInfo = {
-            "Full Name":str(input("Please insert your name (ex. Juan dela Cruz): ")),
-            "Age":int(input("Please insert your age (ex. 19): ")),
-            "Address":str(input("Please input your address: ")),
-            "Phone Number":int(input("Please enter your phone number: ")),
-            "Vaccine Status":str(input("Please state your vaccine status(1st Dose/ Fully Vaccinated / Not vaccinated): ")),
-            "Booster Shot":str(input("Booster shot (y/n): "))
-        }
-
-        con = contact["full_name"]
-        con.append(personalInfo)
-        contact["full_name"] = con
-        for full_name in con:
-            for key in personalInfo:
-                print(key, ":", personalInfo[key])
-
-    elif num == 2:
-        print('Option 2')
-
-    elif num == 3:
-        print('Option 3')
+        elif num == 3:
+            print('Option 3')
 
 menu()    
